@@ -26,11 +26,8 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install bcmath \
     && docker-php-ext-install exif
 
-# Instalar OpenSSL y extensiones
-RUN docker-php-ext-install openssl
-
-# Instalar Curl
-RUN docker-php-ext-install curl
+# OpenSSL y Curl ya están incluidos en PHP en la imagen base
+# No es necesario instalarlo como extensión separada
 
 # Configuración PHP para mejorar los límites
 COPY php.ini /usr/local/etc/php/conf.d/custom.ini
