@@ -3,12 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    # Usamos puertos no estándar para evitar conflictos en Easypanel
-    ports:
-      - "8080:8080"  # Nginx
-      - "8081:8081"  # OpenLiteSpeed HTTP
-      - "8443:8443"  # OpenLiteSpeed HTTPS
-      - "7088:7088"  # OpenLiteSpeed Admin
+    # No especificamos puertos para permitir que Easypanel los gestione
     volumes:
       - ./www:/var/www/html
     restart: always
