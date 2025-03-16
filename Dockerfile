@@ -60,6 +60,9 @@ RUN mkdir -p /var/www/html/logs /var/www/html/fonts /var/www/html/images /var/lo
     && chown -R www-data:www-data /var/www/html/logs \
     && chmod -R 755 /var/www/html
 
+# Eliminar la página de bienvenida predeterminada de Nginx
+RUN rm -f /var/www/html/index.nginx-debian.html
+
 # Exponer puertos actualizados (no los estándar)
 EXPOSE 8080 8081 8443 7088
 
