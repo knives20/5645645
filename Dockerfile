@@ -33,18 +33,6 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 # Configuración PHP para mejorar los límites
 COPY php.ini /usr/local/etc/php/conf.d/custom.ini
 
-# Instalar OpenLiteSpeed
-RUN apt-get update && apt-get install -y wget \
-    && wget -O - https://rpms.litespeedtech.com/debian/enable_lst_debian_repo.sh | bash \
-    && apt-get install -y openlitespeed \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-# Configurar OpenLiteSpeed
-COPY mime.types /usr/local/lsws/conf/mime.types
-COPY httpd_config.conf /usr/local/lsws/conf/httpd_config.conf
-COPY vhost.conf /usr/local/lsws/conf/vhosts/localhost/vhost.conf
-
 # Configurar Nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
@@ -63,8 +51,8 @@ RUN mkdir -p /var/www/html/logs /var/www/html/fonts /var/www/html/images /var/lo
 # Eliminar la página de bienvenida predeterminada de Nginx
 RUN rm -f /var/www/html/index.nginx-debian.html
 
-# Exponer puertos actualizados (no los estándar)
-EXPOSE 8080 8081 8443 7088
+# Exponer puertos estándar de Nginx
+EXPOSE 80 443
 
 # Configurar entrypoint
 COPY entrypoint.sh /entrypoint.sh
