@@ -1,0 +1,21 @@
+application/javascript js
+text/css css
+application/json json
+text/xml xml
+image/svg+xml svg
+application/x-font-ttf ttf
+application/x-font-woff woff
+application/font-woff2 woff2
+application/vnd.ms-fontobject eot
+image/x-icon ico
+
+# Tipos MIME adicionales comunes
+text/html html htm
+text/plain txt
+image/jpeg jpeg jpg
+image/png png
+image/gif gif
+audio/mpeg mp3
+video/mp4 mp4
+application/zip zip
+application/pdf pdf

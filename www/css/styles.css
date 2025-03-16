@@ -1,0 +1,26 @@
+/* Estilos personalizados */
+.status-ok {
+    color: #10b981;
+}
+
+.status-error {
+    color: #ef4444;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Mejoras responsivas */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
