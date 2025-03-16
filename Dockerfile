@@ -57,8 +57,8 @@ COPY ./www /var/www/html
 # Crear directorio para logs de Nginx
 RUN mkdir -p /var/log/nginx
 
-# Exponer puertos
-EXPOSE 80 443 8088
+# Exponer puertos actualizados (no los estándar)
+EXPOSE 8080 8081 8443 7088
 
 # Configurar entrypoint
 COPY entrypoint.sh /entrypoint.sh
