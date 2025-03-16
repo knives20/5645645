@@ -3,12 +3,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "80:80"
-      - "443:443"
-      - "8088:8088"
+    # Quitamos el mapeo de puertos fijo para que Easypanel lo gestione
+    # Easypanel asignará automáticamente los puertos disponibles
+    # ports:
+    #   - "80:80"
+    #   - "443:443"
+    #   - "8088:8088"
     volumes:
-      - ./:/var/www/html
+      - ./www:/var/www/html
     restart: always
     environment:
       - PHP_MEMORY_LIMIT=256M
