@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     # No especificamos puertos para permitir que Easypanel los gestione
     volumes:
-      - ./www:/var/www/html
+      - web_data:/var/www/html
     restart: always
     environment:
       - PHP_MEMORY_LIMIT=256M
@@ -13,3 +13,7 @@ services:
       - PHP_UPLOAD_MAX_FILESIZE=128M
       - PHP_MAX_EXECUTION_TIME=120
       - PHP_MAX_INPUT_TIME=120
+
+volumes:
+  web_data:
+    # Este volumen será persistente en Easypanel
