@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+# Asegurar que todos los directorios existan y tengan los permisos correctos
+mkdir -p /var/www/html/logs /var/www/html/fonts /var/www/html/images
+chown -R www-data:www-data /var/www/html/logs
+chmod -R 755 /var/www/html
+
 # Iniciar PHP-FPM en segundo plano
 php-fpm -D
 

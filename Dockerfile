@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     nginx \
+    procps \
     && rm -rf /var/lib/apt/lists/*
 
 # Instalar extensiones PHP requeridas
@@ -54,8 +55,10 @@ WORKDIR /var/www/html
 # Copiar archivos de la aplicación
 COPY ./www /var/www/html
 
-# Crear directorio para logs de Nginx
-RUN mkdir -p /var/log/nginx
+# Crear directorios requeridos
+RUN mkdir -p /var/www/html/logs /var/www/html/fonts /var/www/html/images /var/log/nginx \
+    && chown -R www-data:www-data /var/www/html/logs \
+    && chmod -R 755 /var/www/html
 
 # Exponer puertos actualizados (no los estándar)
 EXPOSE 8080 8081 8443 7088
